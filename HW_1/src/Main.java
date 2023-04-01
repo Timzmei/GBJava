@@ -16,28 +16,26 @@ public class Main {
         System.out.println("\n\nВыберете задание:");
         Task5();
 
-//        String task = in.next();
+        String task = in.next();
 
-//        while (true) {
-//            switch (task) {
-//                case '1':
-//                    Task1();
-//                    break;
-//                case '2':
-//                    Task2();
-//                    break;
-//                case '3':
-//                    Task3();
-//                    break;
-//                case '4':
-//                    Task4(in);
-//                    break;
-//                case '5':
-//                    return;
-//            }
-//        }
-
-        in.close();
+        while (true) {
+            switch (task) {
+                case "1":
+                    Task1();
+                    break;
+                case "2":
+                    Task2();
+                    break;
+                case "3":
+                    Task3();
+                    break;
+                case "4":
+                    Task4(in);
+                    break;
+                case "5":
+                    return;
+            }
+        }
 
     }
 
@@ -93,7 +91,7 @@ public class Main {
 
     }
 
-// Вывести все простые числа от 1 до 1000 (числа, которые делятся только на 1 и на себя без остатка)
+    // Вывести все простые числа от 1 до 1000 (числа, которые делятся только на 1 и на себя без остатка)
     private static void Task3() {
         System.out.println(getNaturalNumber(1000).toString());
 
