@@ -9,5 +9,9 @@
         <module name="HW_2" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="GBJava" target="18" />
+      <module name="HW_3" target="18" />
+    </bytecodeTargetLevel>
   </component>
 </project>
