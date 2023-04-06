@@ -28,17 +28,20 @@ public class Main {
 
 
         // dequeue() — возвращает первый элемент из очереди и удаляет его
+        System.out.println("Метод dequeue() — возвращает первый элемент из очереди и удаляет его");
         System.out.println("Список до\n" + queue.toString());
         System.out.println(queue.dequeue());
         System.out.println("Список после\n" + queue);
 
 
         // first() — возвращает первый элемент из очереди, не удаляя
+        System.out.println("Метод first() — возвращает первый элемент из очереди, не удаляя");
         System.out.println("Список до\n" + queue);
         System.out.println(queue.first());
         System.out.println("Список после\n" + queue);
 
         // сумма всех значений
+        System.out.println("сумма всех значений");
         System.out.println(sum(list));
 
 
