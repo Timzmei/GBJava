@@ -37,7 +37,7 @@ public class Main {
         Logger logger = Logger.getLogger("");
         logger.setLevel(Level.ALL);
 
-        FileHandler handler = new FileHandler("org/example/logs/app.log");
+        FileHandler handler = new FileHandler("HW_2/src/main/java/org/example/logs/app.log");
         handler.setLevel(Level.ALL);
 
         SimpleFormatter formatter = new SimpleFormatter();
@@ -45,8 +45,10 @@ public class Main {
 
         logger.addHandler(handler);
 
-        String resultGson = StudentGradesParser.parseFileGson("grades.json");
-        String result = StudentGradesParser.parseFile("grades.json");
+        //  используя Gson
+        String resultGson = StudentGradesParser.parseFileGson("HW_2/grades1.json");
+        //  не используя библиотек
+        String result = StudentGradesParser.parseFile("HW_2/grades1.json");
 
         logger.info(resultGson);
         logger.info(result);
