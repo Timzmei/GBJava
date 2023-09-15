@@ -1,18 +1,18 @@
 class CountFieldException extends Exception {
     public CountFieldException(String message) {
-        super("The number of fields is " + message + " than required!");
+        super("Количество полей " + message + " чем требуется!");
     }
 }
 
 class TypeDataExceptoin extends Exception {
     public TypeDataExceptoin(int index) {
-        super("The field [" + index + "] has an invalid type!");
+        super("Поле [" + index + "] имеет недопустимый тип!");
     }
 }
 
 class FormatException extends Exception {
     public FormatException() {
-        super("Incorrect phone format!");
+        super("Неправильный формат номера телефона!");
     }
 }
 

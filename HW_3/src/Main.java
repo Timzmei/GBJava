@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         try {
-            Person person = EnterData("Enter person data: ");
+            Person person = EnterData("Введите фамилию, имя, отчество и телефон через пробел: ");
             System.out.println(person);
             try (FileWriter writer = new FileWriter(person.getSecondName() + ".txt", true)) {
                 writer.write(person.toString());
@@ -30,10 +30,10 @@ public class Main {
         }
 
         if (data.length < 4) {
-            throw new CountFieldException("less");
+            throw new CountFieldException("меньше");
         }
         if (data.length > 4) {
-            throw new CountFieldException("more");
+            throw new CountFieldException("больше");
         }
 
         for (int i = 0; i < 3; i++) {
