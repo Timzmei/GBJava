@@ -1,47 +1,62 @@
-import java.util.*;
+import java.io.*;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        List<Integer> list = genereteList();
-        // Список с произвольными значениями
-        System.out.println(list);
-        // Список с удаленнными четными значений
-        System.out.println(deleteEven(list));
+        try {
+            Person person = EnterData("Enter person data: ");
+            System.out.println(person);
+            try (FileWriter writer = new FileWriter(person.getSecondName() + ".txt", true)) {
+                writer.write(person.toString());
+                writer.append('\n');
+                writer.flush();
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
 
-        // Минимальное значение
-        System.out.println(Collections.min(list));
-
-        // Максимальной значение
-        System.out.println(Collections.max(list));
-
-        // Среднее арифмитическое значение
-        System.out.println(averageOfList(list));
-
-    }
-
-    public static List<Integer> genereteList() {
-        List<Integer> array = new ArrayList<>();
-        for(int i = 0; i < 100; i++) {
-            array.add(new Random().nextInt(100));
+        } catch (EmptyStringException | CountFieldException | TypeDataExceptoin | FormatException e) {
+            System.out.println(e.getMessage());
         }
-        return array;
+
     }
 
-    public static List<Integer> deleteEven(List<Integer> list) {
-        for(int i = list.size() - 1; i >= 0; i--) {
-            if(list.get(i) % 2 == 0) {
-                list.remove(i);
+    public static Person EnterData(String message) throws CountFieldException, TypeDataExceptoin,
+            FormatException, EmptyStringException {
+        System.out.print(message);
+        String[] data = new String[] { "" };
+        try (Scanner scanner = new Scanner(System.in)) {
+            String line = scanner.nextLine();
+            data = line.split(" ");
+        }
+
+        if (data.length < 4) {
+            throw new CountFieldException("less");
+        }
+        if (data.length > 4) {
+            throw new CountFieldException("more");
+        }
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < data[i].length(); j++) {
+                if (Character.isDigit(data[i].charAt(j))) {
+                    throw new TypeDataExceptoin(i);
+                }
             }
         }
-        return list;
-    }
 
-    public static double averageOfList(List<Integer> list) {
-        int sum = 0;
-        for(int i = list.size() - 1; i >= 0; i--) {
-            sum += list.get(i);
+        long phone;
+        try {
+            phone = Long.parseLong(data[3]);
+        } catch (NumberFormatException e) {
+            throw new TypeDataExceptoin(3);
         }
-        return (double) sum / list.size();
-    }
 
+        if (phone < 0 | phone > 999999999999999l) {
+            throw new FormatException();
+        }
+
+        Person person = new Person(data[0], data[1], data[2], phone);
+
+        return person;
+    }
 }
